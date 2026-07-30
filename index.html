@@ -25,50 +25,50 @@
     display:flex; flex-direction:column;
   }
   .eyebrow{
-    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--ink-faint); margin:0 0 4px;
+    font-size:18px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-faint); margin:0 0 6px;
   }
   h1{
-    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,3.2vw,36px);
-    margin:0 0 20px; color:var(--ink); line-height:1.05;
+    font-family:'Fraunces',serif; font-weight:600; font-size:clamp(38px,4.5vw,58px);
+    margin:0 0 28px; color:var(--ink); line-height:1.05;
   }
   h1 span{color:var(--green);}
   .list{
     flex:1; min-height:0;
     display:grid;
     grid-auto-flow:column;
-    grid-template-rows:repeat(auto-fill, minmax(52px,1fr));
-    grid-auto-columns:minmax(280px,1fr);
-    gap:8px 18px;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(var(--rows,8), 1fr);
+    gap:16px 48px;
   }
   .row{
-    display:flex; align-items:center; gap:14px;
-    background:var(--card); border-radius:8px;
-    padding:8px 14px; position:relative; overflow:hidden;
+    display:flex; align-items:center; gap:22px;
+    background:var(--card); border-radius:12px;
+    padding:16px 26px; position:relative; overflow:hidden;
   }
   .flame{
-    flex:0 0 auto; width:4px; align-self:stretch; border-radius:3px;
+    flex:0 0 auto; width:6px; align-self:stretch; border-radius:4px;
     background:linear-gradient(180deg, var(--orange), var(--green));
   }
   .info{flex:1; min-width:0; display:flex; align-items:center;}
   .name{
-    font-size:15px; font-weight:600; color:var(--ink); margin:0;
+    font-size:28px; font-weight:600; color:var(--ink); margin:0;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
   .date{
     flex:0 0 auto; text-align:right; font-family:'Fraunces',serif;
   }
-  .day{font-size:16px; font-weight:600; color:var(--amber); line-height:1;}
+  .day{font-size:32px; font-weight:600; color:var(--amber); line-height:1;}
   .month{
-    display:block; font-family:'Inter',sans-serif; font-size:9px;
+    display:block; font-family:'Inter',sans-serif; font-size:14px;
     letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint);
   }
   .empty{
-    color:var(--ink-faint); font-size:15px; padding:40px 0; text-align:center;
+    color:var(--ink-faint); font-size:22px; padding:40px 0; text-align:center;
   }
   footer{
-    margin:12px 0 0; text-align:center;
-    font-size:11px; color:var(--ink-faint); flex:0 0 auto;
+    margin:16px 0 0; text-align:center;
+    font-size:15px; color:var(--ink-faint); flex:0 0 auto;
   }
 </style>
 </head>
@@ -93,6 +93,8 @@
         return parseInt(a.dataset.day, 10) - parseInt(b.dataset.day, 10);
       });
       rows.forEach(function (row) { list.appendChild(row); });
+      var perColumn = Math.max(1, Math.ceil(rows.length / 2));
+      list.style.setProperty('--rows', perColumn);
     });
   </script>
 </body>
